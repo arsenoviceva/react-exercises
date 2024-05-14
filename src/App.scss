@@ -1,0 +1,79 @@
+$primary: #7ebbfa;
+$danger: #ee7573;
+$success: #83c5be;
+$secondary: #ffafcc;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+
+  "danger": $danger,
+);
+@import "~bootstrap/scss/bootstrap.scss";
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h2 {
+  font-weight: 600;
+}
+
+.text-break-word {
+  overflow: hidden; /* make sure it hides the content that overflows */
+  white-space: nowrap; /* don't break the line */
+  text-overflow: ellipsis; /* give the beautiful '...' effect */
+}
+.user-img {
+  width: 100%;
+  border-radius: 100%;
+}
+.form-select {
+  color: white;
+}
+.deleted-card {
+  border: 1px solid red;
+}
+.btn {
+  color: white;
+}
+.quiz-container {
+  width: 500px;
+
+  border-radius: 4px;
+  margin-top: 50px;
+  padding: 30px 60px;
+  box-sizing: border-box;
+}
+.active-question-no {
+  font-size: 32px;
+  font-weight: 500;
+}
+.total-question {
+  font-size: 16px;
+  font-weight: 500;
+}
+ul {
+  margin-top: 20px;
+  li {
+    text-decoration: none;
+    list-style: none;
+    border: 1px solid;
+    border-radius: 16px;
+    padding: 11px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  .selected-answer-true {
+    border: 5px solid $success;
+  }
+  .selected-answer-false {
+    border: 5px solid $danger;
+  }
+}
