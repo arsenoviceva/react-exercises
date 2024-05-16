@@ -14,6 +14,7 @@ export const Test = () => {
   const [result, setResult] = useState(initialResult);
   const [showResult, setShowResult] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [spentTime, setSpentTime] = useState({ start: 0, end: 0 });
 
   const { question, answers, correctAnswer } = listOfQuestions[currentQuestion];
 
@@ -25,6 +26,7 @@ export const Test = () => {
       setAnswer(false);
     }
     setClicked(true);
+    setSpentTime((prev) => ({ ...prev, start: new Date().getTime() }));
   };
 
   const onClickNext = () => {
@@ -44,6 +46,7 @@ export const Test = () => {
     if (currentQuestion !== listOfQuestions.length - 1) {
       setCurrentQuestion((prev) => prev + 1);
     } else {
+      setSpentTime((prev) => ({ ...prev, end: new Date().getTime() }));
       setCurrentQuestion(0);
       setShowResult(true);
     }
@@ -101,16 +104,23 @@ export const Test = () => {
         </div>
       ) : (
         <div>
-          <h5 className="my-3"> Result: </h5>
+          <h5 className="my-3 text-center"> Result: </h5>
           <Row className="w-100">
-            <Col lg={4}>
+            <Col lg={3} className="p-0">
               Total questions: <strong> {listOfQuestions.length} </strong>
             </Col>
-            <Col lg={4}>
+            <Col lg={3} className="p-0">
               Correct answers: <strong> {result.correctAnswers} </strong>
             </Col>
-            <Col lg={4}>
+            <Col lg={3} className="p-0">
               Wrong answers: <strong> {result.wrongAnswers} </strong>
+            </Col>
+            <Col lg={3} className="p-0">
+              You completed the test in:{" "}
+              <strong>
+                {" "}
+                {((spentTime.end - spentTime.start) / 1000).toFixed(2)}s
+              </strong>
             </Col>
           </Row>
 

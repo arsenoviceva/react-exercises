@@ -11,6 +11,7 @@ import { Users } from "./users";
 import { SingleUser } from "./users/components/SingleUser";
 import { Quiz } from "./quiz";
 import { Test } from "./test";
+import { Chat } from "./chat";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/users/:id" element={<SingleUser />} />
         <Route path="/quiz" element={<Quiz />} />{" "}
         <Route path="/test" element={<Test />} />{" "}
+        <Route path="/chat" element={<Chat />} />{" "}
       </Routes>
     </>
   );
