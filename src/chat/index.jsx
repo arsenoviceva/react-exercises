@@ -25,7 +25,7 @@ export const Chat = () => {
   const [message, setMessage] = useState("");
   const [selectedUserID, setSelectedUserID] = useState();
   const [openModal, setOpenModal] = useState(false);
-  const [newConversation, SetNewConversation] = useState({
+  const [newConversation, setNewConversation] = useState({
     username: "",
     message: "",
     messageId: null,
@@ -45,16 +45,10 @@ export const Chat = () => {
   };
 
   const openChatHandler = (user) => {
-    let found;
-    for (const [key, value] of Object.entries(messages)) {
-      if (+user.messageId === +key) {
-        found = value;
-        setSelectedUserID(key);
-      }
-    }
+    setSelectedUserID(user.messageId);
     setSelectedConversation({
       user: user,
-      conversation: found,
+      conversation: messages[user.messageId],
     });
   };
 
@@ -64,7 +58,7 @@ export const Chat = () => {
   };
 
   const saveNewMessageHandler = (e) => {
-    if (message.length > 0) {
+    if (message.trim().length > 0) {
       const newData = {
         ...selectedConversation,
         conversation: [
@@ -80,29 +74,9 @@ export const Chat = () => {
         ],
       };
       setSelectedConversation(newData);
-      console.log(newData, "newData");
-      console.log(messages, "messages");
-      let object = {};
-      for (const [key, value] of Object.entries(messages)) {
-        if (+selectedConversation?.user.messageId === +key) {
-          object[key] = [
-            ...value,
-            {
-              byUser: {
-                username: "Markovic Marija",
-                userPhoto: "/images/user3.jpg",
-              },
-              message: message,
-              isMyMessage: true,
-            },
-          ];
-        } else {
-          object[key] = value;
-        }
-      }
-      console.log(object, "object");
-
-      localStorage.setItem("allMessages", JSON.stringify(object));
+      const currentChatIndex = newData.user.messageId;
+      messages[currentChatIndex] = newData.conversation;
+      localStorage.setItem("allMessages", JSON.stringify(messages));
       setMessage("");
     } else {
       alert("You can not send empty messages!");
@@ -119,19 +93,22 @@ export const Chat = () => {
   const newConversationHandler = (e) => {
     const { value, name } = e.target;
     const date = new Date();
-    SetNewConversation((prev) => ({
+    setNewConversation((prev) => ({
       ...prev,
       [name]: value,
       isSeen: true,
       createdAt: date.getHours() + ":" + date.getMinutes() + "PM",
-      messageId: Math.floor(Math.random() * (50 - 11) + 11),
+      messageId: Math.floor(Math.random() * (999 - 50) + 50),
       userPhoto: "https://source.unsplash.com/100x100/?portrait",
     }));
   };
 
   const createNewConversationHandler = () => {
-    console.log(messages);
-    if (!newConversation?.message.length || !newConversation?.username.length) {
+    console.log(newConversation, "gg");
+    if (
+      !newConversation?.message?.length ||
+      !newConversation?.username?.length
+    ) {
       alert("You must enter username and message");
     } else {
       const conversation = userList.concat(newConversation);
@@ -157,7 +134,7 @@ export const Chat = () => {
       );
 
       setOpenModal(false);
-      SetNewConversation("");
+      setNewConversation("");
       console.log(newConversation);
     }
   };
@@ -175,64 +152,74 @@ export const Chat = () => {
   }, []);
 
   return (
-    <Container>
-      <Row className="w-100  ">
-        <Col lg={4} className="bg-info p-0 ">
-          <Row className="align-items-center my-4">
-            <Col lg={3}>
-              <img src="/images/user3.jpg" className="user-photo w-100" />
-            </Col>
-            <Col lg={9}>
-              <h5 className="text-primary"> Markovic Marija</h5>
-            </Col>
-          </Row>
-          <div className="mx-2">
-            <input
-              type="text"
-              className="form-control rounded-5 my-2"
-              placeholder="Search friends"
-              value={searchUser}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="overflow-conversations">
-            {userList?.map((user) => {
-              // console.log(user);
-              return (
-                <User
-                  user={user}
-                  onClick={openChatHandler}
-                  selectedUser={selectedUserID}
-                />
-              );
-            })}
-          </div>
-          <div className="mx-1 p-2">
-            <Button onClick={openModalHandler} className=" w-100 ">
-              Start a new conversation
-            </Button>
-          </div>
-        </Col>
+    <div className="center-chatbox-wrapper">
+      <Container className="bg-white chat-border-radius ">
+        <Row className="w-100 chat-border-radius">
+          <Col lg={4} className="bg-info p-0 chat-border-radius ">
+            <Row className="align-items-center my-4">
+              <Col lg={3}>
+                <img src="/images/user3.jpg" className="user-photo w-100" />
+              </Col>
+              <Col lg={9}>
+                <h5 className="text-primary"> Markovic Marija</h5>
+              </Col>
+            </Row>
+            <div className="mx-2 border-bottom">
+              <input
+                type="text"
+                className="form-control rounded-5 my-2"
+                placeholder="Search friends"
+                value={searchUser}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="overflow-conversations">
+              {!!userList?.length ? (
+                userList?.map((user) => {
+                  // console.log(user);
+                  return (
+                    <User
+                      user={user}
+                      onClick={openChatHandler}
+                      selectedUser={selectedUserID}
+                    />
+                  );
+                })
+              ) : (
+                <div className="row p-2">
+                  <div className="col-12">
+                    <h6>List is empty</h6>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="mx-1 p-2 border-top">
+              <Button onClick={openModalHandler} className=" w-100 ">
+                Start a new conversation
+              </Button>
+            </div>
+          </Col>
 
-        <Col lg={8} className="border border-1">
-          {selectedConversation.conversation.length === 0 ? (
-            <EmptyState />
-          ) : (
-            <MessageContent
-              selectedConversation={selectedConversation}
-              onChange={newMessageHandler}
-              onClick={saveNewMessageHandler}
-              message={message}
-            />
-          )}
-        </Col>
-      </Row>
-      <CreateNewConversationModal
-        open={openModal}
-        close={closeModalHandler}
-        handleChange={newConversationHandler}
-        onClick={createNewConversationHandler}
-      />
-    </Container>
+          <Col lg={8}>
+            {!selectedConversation.conversation.length ? (
+              <EmptyState />
+            ) : (
+              <MessageContent
+                selectedConversation={selectedConversation}
+                onChange={newMessageHandler}
+                onClick={saveNewMessageHandler}
+                message={message}
+              />
+            )}
+          </Col>
+        </Row>
+        <CreateNewConversationModal
+          open={openModal}
+          close={closeModalHandler}
+          handleChange={newConversationHandler}
+          onClick={createNewConversationHandler}
+        />
+      </Container>
+    </div>
   );
 };

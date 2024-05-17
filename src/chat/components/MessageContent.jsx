@@ -10,9 +10,9 @@ export const MessageContent = ({
   message,
 }) => {
   return (
-    <div className="h-100 d-flex flex-column">
+    <div className="h-100 d-flex flex-column justify-content-between">
       <MessageHeader selectedConversation={selectedConversation} />
-      <div className="h-50vh border-bottom border-1 overflow-y-auto overflow">
+      <div className="h-60vh border-bottom border-1 overflow-y-auto overflow">
         <MessageBody selectedConversation={selectedConversation} />
       </div>
       <MessageFooter onChange={onChange} onClick={onClick} message={message} />

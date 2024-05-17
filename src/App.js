@@ -12,6 +12,7 @@ import { SingleUser } from "./users/components/SingleUser";
 import { Quiz } from "./quiz";
 import { Test } from "./test";
 import { Chat } from "./chat";
+import { Calculator } from "./calculator";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/quiz" element={<Quiz />} />{" "}
         <Route path="/test" element={<Test />} />{" "}
         <Route path="/chat" element={<Chat />} />{" "}
+        <Route path="/calculator" element={<Calculator />} />{" "}
       </Routes>
     </>
   );

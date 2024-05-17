@@ -1,11 +1,11 @@
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const navigate = useNavigate();
   return (
-    <Container className="mt-5  ">
-      <div className=" d-flex align-items-center gap-3">
+    <Container className="home-container">
+      <div className="home-page">
         <Button onClick={() => navigate("/movies")}>Movies</Button>
         <Button onClick={() => navigate("/recipes")}>Recipes</Button>
         <Button onClick={() => navigate("/tasks")}>Tasks</Button>
@@ -14,6 +14,7 @@ export const Home = () => {
         <Button onClick={() => navigate("/quiz")}>Quiz</Button>
         <Button onClick={() => navigate("/test")}>Test</Button>
         <Button onClick={() => navigate("/chat")}>Chat</Button>
+        <Button onClick={() => navigate("/calculator")}>Calculator</Button>
       </div>
     </Container>
   );
