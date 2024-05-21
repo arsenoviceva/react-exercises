@@ -157,7 +157,8 @@ p {
   height: 100vh;
   background-color: #3b4664;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  padding-top: 15rem;
   justify-content: center;
 }
 .calculator-header {
@@ -166,71 +167,68 @@ p {
   justify-content: center;
   background-color: #181f32;
   color: white;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 10px;
   text-align: right;
-  width: 500px;
-
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 2.5rem;
   min-height: 80px;
 }
-.calculator-header .prev-output {
-  font-size: 2.5rem;
-}
-// .calculator-header .curr-output {
-//   font-size: 2.5rem;
-// }
+
 .calculator-body {
-  align-items: center;
-  justify-content: center;
-  // display: grid;
-  // grid-template-columns: repeat(4, 7rem);
-  // grid-template-rows: repeat(5, 3rem);
   background-color: #252d44;
   color: wheat;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 15px;
-  width: 500px;
+  width: fit-content;
+  // height: calc(100% - 110px);
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 15px;
 }
 .calculator-body .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  padding: 0 20px 0 20px;
   background-color: #eae3db;
   color: #464d60;
-  font-size: 25px;
-  font-weight: 900;
-  width: 100vw;
-  border: 0;
-  margin: 5px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 32px;
+  // width: 100vw;
+  // margin: 5px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0px 3px #b6a49a;
 }
-.calculator-body .form-input {
-  cursor: pointer;
-  background-color: #eae3db;
-  color: #464d60;
-  font-size: 25px;
-  font-weight: 900;
-  width: 100vw;
-  border: 0;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 5px;
-}
-.form-input:hover {
-  background-color: white;
-}
+
 .btn:hover {
   background-color: white;
 }
-.col-sm-3 {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+.calculator-body .equals {
+  background-color: #f96c5b;
+  grid-area: 5 / 3 / 5 / 5;
+  color: white;
+  box-shadow: 0px 3px #96271c;
+  font-size: 20px;
 }
-.col-sm-6 {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.calculator-body .reset {
+  background-color: #a2b3e1;
+  grid-area: 5 / 1 / 5 / 3;
+  color: white;
+  box-shadow: 0px 3px #414e71;
+  font-size: 20px;
 }
-.col-sm-6 .btn {
-  width: 100vw;
+.calculator-body .del {
+  background-color: #a2b2e3;
+  color: white;
+  box-shadow: 0px 3px #414e71;
+  font-size: 20px;
 }
