@@ -14,10 +14,11 @@ import { Test } from "./test";
 import { Chat } from "./chat";
 import { Calculator } from "./calculator";
 import { JobListings } from "./job-listing";
+import { FaQ } from "./faq";
 
 function App() {
   return (
-    <>
+    <div className="h-100">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -31,8 +32,9 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/job-listings" element={<JobListings />} />
+        <Route path="/faq" element={<FaQ />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

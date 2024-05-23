@@ -18,6 +18,9 @@ $theme-colors: (
 // body {
 //   background-color: $primary;
 // }
+body {
+  height: 100%;
+}
 
 .center-chatbox-wrapper {
   height: 100vh;
@@ -353,4 +356,64 @@ p {
   padding: 0 0 0 10px;
   margin: 5px 5px 5px 15px;
   font-size: 0.9em;
+}
+.faq-body-container {
+  position: relative;
+  background-color: #f9eeff;
+  //width: 100vw;
+  height: 62vh;
+}
+.faq-card {
+  padding: 2rem;
+  position: absolute;
+  top: -10%;
+  left: calc(50% - 300px);
+  background-color: white;
+  width: 600px;
+  height: fit-content;
+  border-radius: 5px;
+}
+.faq-title {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+// .accordion-item {
+//   border: 0;
+//   border-bottom: 2px solid #e1e1e1;
+// }
+// .accordion-header {
+//   font-size: 16px;
+//   font-weight: 600;
+// }
+// .accordion-header:hover {
+//   cursor: pointer;
+//   color: #9a3dbf;
+// }
+.faq-row {
+  border-bottom: 1px solid #e1e1e1;
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 1rem 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.faq-question:hover {
+  cursor: pointer;
+  color: #9a3dbf;
+}
+// .accordion-button:not(.collapsed)::after {
+//   background-image: url("./assets/icon-minus.svg");
+// }
+// .accordion-button::after {
+//   background-image: url("./assets/icon-plus.svg");
+// }
+.faq-answer {
+  padding: 2rem 0 2rem 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: hsl(292, 16%, 49%);
 }
