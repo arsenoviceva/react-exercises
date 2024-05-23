@@ -15,6 +15,7 @@ export const Home = () => {
         <Button onClick={() => navigate("/test")}>Test</Button>
         <Button onClick={() => navigate("/chat")}>Chat</Button>
         <Button onClick={() => navigate("/calculator")}>Calculator</Button>
+        <Button onClick={() => navigate("/job-listings")}>Job listings</Button>
       </div>
     </Container>
   );

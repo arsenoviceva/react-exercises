@@ -232,3 +232,125 @@ p {
   box-shadow: 0px 3px #414e71;
   font-size: 20px;
 }
+
+.header-container {
+  background-color: #5da5a4;
+}
+.body-container {
+  background-color: #f0fafb;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  padding-top: 3rem;
+}
+.job-listing-container {
+  background-color: white;
+  box-shadow: 1px 10px 10px #d8eced;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  border-radius: 5px;
+  padding: 2rem;
+}
+.featured-job-border {
+  border-left: 7px solid #5da5a2;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 10px 5px #d8eced;
+  width: inherit;
+  height: fit-content;
+  word-wrap: break-word;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: -2.5rem;
+  position: relative;
+  border: none;
+  outline: none;
+}
+.company-name {
+  font-weight: 700;
+  color: #629f9a;
+}
+.new-job {
+  background-color: #60a8a7;
+  padding: 2px 5px 2px 5px;
+  color: white;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.featured-job {
+  background-color: #2e3c3c;
+  padding: 2px 5px 2px 5px;
+  color: white;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.position:hover {
+  color: #60a8a7;
+  cursor: pointer;
+}
+.informations {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 8px 6px 8px;
+  margin: 0 15px 15px 0px;
+  color: #5ea4a4;
+  background-color: #ecf4f6;
+  font-size: 0.85em;
+  font-weight: 700;
+}
+.informations:hover {
+  background-color: #5ea4a4;
+  color: white;
+}
+.clear {
+  font-size: 15px;
+  font-weight: 700;
+  color: #60a8a7;
+  cursor: pointer;
+  position: absolute;
+  right: 1%;
+}
+.clear:hover {
+  text-decoration: underline;
+}
+.button-x {
+  background-color: #5ea4a4;
+  color: white;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  border-radius: 0px 5px 5px 0px;
+}
+.button-x:hover {
+  background-color: #2e3c3c;
+}
+
+.filter-tag {
+  cursor: pointer;
+  color: #5ea4a4;
+  background-color: #ecf4f6;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  padding: 0 0 0 10px;
+  margin: 5px 5px 5px 15px;
+  font-size: 0.9em;
+}

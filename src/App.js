@@ -13,6 +13,7 @@ import { Quiz } from "./quiz";
 import { Test } from "./test";
 import { Chat } from "./chat";
 import { Calculator } from "./calculator";
+import { JobListings } from "./job-listing";
 
 function App() {
   return (
@@ -23,12 +24,13 @@ function App() {
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/exercises" element={<Exercises />} />
-        <Route path="/users" element={<Users />} />{" "}
+        <Route path="/users" element={<Users />} />
         <Route path="/users/:id" element={<SingleUser />} />
-        <Route path="/quiz" element={<Quiz />} />{" "}
-        <Route path="/test" element={<Test />} />{" "}
-        <Route path="/chat" element={<Chat />} />{" "}
-        <Route path="/calculator" element={<Calculator />} />{" "}
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/calculator" element={<Calculator />} />
+        <Route path="/job-listings" element={<JobListings />} />
       </Routes>
     </>
   );
