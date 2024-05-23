@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { TaskCard } from "./components/TaskCard";
 import { TaskForm } from "./components/TaskForm";
@@ -32,16 +32,19 @@ export const Tasks = () => {
 
   const createNewTask = () => {
     const addedTask = taskList.concat({ name: newTask, id: Math.random() });
-    localStorage.setItem("listOfTasks", JSON.stringify(addedTask));
+    // localStorage.setItem("listOfTasks", JSON.stringify(addedTask));
     setTaskList(addedTask);
     setNewTask("");
   };
 
   const deleteTaskHandler = (id) => {
     const deletedTask = taskList.filter((task) => task.id !== id);
-    localStorage.setItem("listOfTasks", JSON.stringify(deletedTask));
+    // localStorage.setItem("listOfTasks", JSON.stringify(deletedTask));
     setTaskList(deletedTask);
   };
+  useEffect(() => {
+    localStorage.setItem("listOfTasks", JSON.stringify(taskList));
+  }, [taskList.length]);
 
   return (
     <Container className="w-100">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { ModalExercise } from "./components/ModalExercise";
@@ -11,11 +11,13 @@ const initialCreateTask = {
 };
 
 export const Exercises = () => {
-  const storedExercises = JSON.parse(localStorage.getItem("exercises"));
+  //const storedExercises = JSON.parse(localStorage.getItem("exercises"));
 
   const [openModal, setOpenModal] = useState(false);
   const [openModalDel, setOpenModalDel] = useState(false);
-  const [list, setList] = useState(storedExercises || []);
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem("exercises"))
+  );
   const [createTask, setCreateTask] = useState(initialCreateTask);
   const [selectedExercise, setSelectedExercise] = useState({});
 
@@ -46,7 +48,7 @@ export const Exercises = () => {
       id: Math.random(),
     });
     console.log(updatedExerciseList, "new ex");
-    localStorage.setItem("exercises", JSON.stringify(updatedExerciseList));
+    //localStorage.setItem("exercises", JSON.stringify(updatedExerciseList));
     setList(updatedExerciseList);
     setOpenModal(false);
     setCreateTask(initialCreateTask);
@@ -54,7 +56,7 @@ export const Exercises = () => {
 
   const clickHandlerDel = (id) => {
     const updatedExerciseList = list.filter((item) => item.id !== id);
-    localStorage.setItem("exercises", JSON.stringify(updatedExerciseList));
+    // localStorage.setItem("exercises", JSON.stringify(updatedExerciseList));
     setList(updatedExerciseList);
     setOpenModalDel(false);
   };
@@ -72,6 +74,10 @@ export const Exercises = () => {
     setList(updatedList);
     localStorage.setItem("exercises", JSON.stringify(updatedList));
   };
+
+  useEffect(() => {
+    localStorage.setItem("exercises", JSON.stringify(list));
+  }, [list.length]);
   return (
     <Container className="my-5">
       <Row className="w-100 align-items-center border-bottom border-3">
