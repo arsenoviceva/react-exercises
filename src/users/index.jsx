@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { UserCard } from "./components/UserCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { companies } from "../object/companies";
 import { ModalDelete } from "./components/ModalDelete";
 import { ModalCreateUser } from "./components/ModalCreateUser";
@@ -81,7 +81,7 @@ export const Users = () => {
     };
     const newUser = savedUsers.concat(userToSave);
     setSelectedUser(userToSave);
-    localStorage.setItem("listOfUsers", JSON.stringify(newUser));
+    //localStorage.setItem("listOfUsers", JSON.stringify(newUser));
     setUsers(newUser);
     setOpenModalCreate(false);
     setOpenModalSuccess(true);
@@ -90,6 +90,10 @@ export const Users = () => {
     setOpenModalCreate(false);
     setOpenModalSuccess(false);
   };
+
+  useEffect(() => {
+    localStorage.setItem("listOfUsers", JSON.stringify(users));
+  }, [users.length]);
   return (
     <Container>
       <Row className="w-100 my-3 justify-content-between ">

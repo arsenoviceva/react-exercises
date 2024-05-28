@@ -15,6 +15,7 @@ import { Chat } from "./chat";
 import { Calculator } from "./calculator";
 import { JobListings } from "./job-listing";
 import { FaQ } from "./faq";
+import { ECommerce } from "./ecommerce-product-page-main";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/job-listings" element={<JobListings />} />
         <Route path="/faq" element={<FaQ />} />
+        <Route path="/ecommerce" element={<ECommerce />} />
       </Routes>
     </div>
   );

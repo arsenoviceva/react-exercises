@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { RecipeCard } from "./components/RecipeCard";
 import { useState } from "react";
@@ -75,7 +75,7 @@ export const Recipes = () => {
         }
         return recipe;
       });
-      localStorage.setItem("listOfRecipes", JSON.stringify(updatedRecipe));
+      //localStorage.setItem("listOfRecipes", JSON.stringify(updatedRecipe));
 
       setRecipes(updatedRecipe);
     } else {
@@ -83,7 +83,7 @@ export const Recipes = () => {
         ...currentRecipe,
         id: Math.random(),
       });
-      localStorage.setItem("listOfRecipes", JSON.stringify(newRecipe));
+      //localStorage.setItem("listOfRecipes", JSON.stringify(newRecipe));
 
       setRecipes(
         newRecipe.filter((recipe) =>
@@ -118,7 +118,7 @@ export const Recipes = () => {
 
   const deleteRecipeHandler = (id) => {
     const recipesList = savedRecipeList.filter((recipe) => recipe.id !== id);
-    localStorage.setItem("listOfRecipes", JSON.stringify(recipesList));
+    // localStorage.setItem("listOfRecipes", JSON.stringify(recipesList));
     setCurrentRecipe({});
     setRecipes(recipesList);
     setOpenModalDelete(false);
@@ -170,6 +170,10 @@ export const Recipes = () => {
       }));
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("listOfRecipes", JSON.stringify(recipes));
+  }, [recipes.length]);
 
   return (
     <Container>
