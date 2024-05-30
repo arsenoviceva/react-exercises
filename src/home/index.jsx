@@ -18,6 +18,7 @@ export const Home = () => {
         <Button onClick={() => navigate("/job-listings")}>Job listings</Button>
         <Button onClick={() => navigate("/faq")}>FaQ</Button>
         <Button onClick={() => navigate("/ecommerce")}>ECommerce</Button>
+        <Button onClick={() => navigate("/jsonexerciseget")}>JSON </Button>
       </div>
     </Container>
   );

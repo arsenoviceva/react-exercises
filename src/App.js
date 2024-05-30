@@ -16,6 +16,7 @@ import { Calculator } from "./calculator";
 import { JobListings } from "./job-listing";
 import { FaQ } from "./faq";
 import { ECommerce } from "./ecommerce-product-page-main";
+import { JsonExerciseGet } from "./jJSONExerciseGET";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/job-listings" element={<JobListings />} />
         <Route path="/faq" element={<FaQ />} />
         <Route path="/ecommerce" element={<ECommerce />} />
+        <Route path="/jsonexerciseget" element={<JsonExerciseGet />} />
       </Routes>
     </div>
   );

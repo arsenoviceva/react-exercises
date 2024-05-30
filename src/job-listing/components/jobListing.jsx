@@ -40,7 +40,7 @@ export const JobListing = ({
           </Row>
         </Col>
         <Col lg={6}>
-          <div className="d-flex gap-4 justify-content-end">
+          <div className="d-flex justify-content-end">
             {jobTags.map((tag) => {
               return (
                 <button onClick={() => onClick(tag)} className="informations">
