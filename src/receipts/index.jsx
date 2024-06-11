@@ -75,7 +75,7 @@ export const Recipes = () => {
         }
         return recipe;
       });
-      //localStorage.setItem("listOfRecipes", JSON.stringify(updatedRecipe));
+      localStorage.setItem("listOfRecipes", JSON.stringify(updatedRecipe));
 
       setRecipes(updatedRecipe);
     } else {
@@ -83,7 +83,7 @@ export const Recipes = () => {
         ...currentRecipe,
         id: Math.random(),
       });
-      //localStorage.setItem("listOfRecipes", JSON.stringify(newRecipe));
+      localStorage.setItem("listOfRecipes", JSON.stringify(newRecipe));
 
       setRecipes(
         newRecipe.filter((recipe) =>

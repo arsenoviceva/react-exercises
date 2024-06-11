@@ -17,10 +17,15 @@ import { JobListings } from "./job-listing";
 import { FaQ } from "./faq";
 import { ECommerce } from "./ecommerce-product-page-main";
 import { JsonExerciseGet } from "./jJSONExerciseGET";
+import { MonsterRolodex } from "./monsters-rolodex";
+import { JsonExerciseGetUser } from "./jJSONExerciseGET/components/JsonExerciseGetUser";
+import { PostsList } from "./posts-list";
+import { OpenedPost } from "./posts-list/components/OpenedPost";
+import { Gallery } from "./gallery";
 
 function App() {
   return (
-    <div className="h-100">
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -37,6 +42,11 @@ function App() {
         <Route path="/faq" element={<FaQ />} />
         <Route path="/ecommerce" element={<ECommerce />} />
         <Route path="/jsonexerciseget" element={<JsonExerciseGet />} />
+        <Route path="/jsonexerciseget/:id" element={<JsonExerciseGetUser />} />
+        <Route path="/monster-rolodex" element={<MonsterRolodex />} />
+        <Route path="/posts-list" element={<PostsList />} />
+        <Route path="/posts-list/:id" element={<OpenedPost />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </div>
   );

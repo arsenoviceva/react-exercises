@@ -19,6 +19,10 @@ export const Home = () => {
         <Button onClick={() => navigate("/faq")}>FaQ</Button>
         <Button onClick={() => navigate("/ecommerce")}>ECommerce</Button>
         <Button onClick={() => navigate("/jsonexerciseget")}>JSON </Button>
+        <Button onClick={() => navigate("/monster-rolodex")}>
+          Monster Rolodex
+        </Button>
+        <Button onClick={() => navigate("/posts-list")}>Posts list</Button>
       </div>
     </Container>
   );
